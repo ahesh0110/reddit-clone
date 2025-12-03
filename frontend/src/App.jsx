@@ -6,13 +6,58 @@ import CommunityPage from "./pages/CommunityPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 
+import PopularPage from "./pages/PopularPage";
+import AllPage from "./pages/AllPage";
+import ExplorePage from "./pages/ExplorePage";
+import CreateCommunityPage from "./pages/CreateCommunityPage";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* AUTH */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 
+        {/* SIDEBAR ROUTES */}
+        <Route 
+          path="/popular"
+          element={
+            <MainLayout noRightSidebar={true}>
+              <PopularPage />
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path="/all"
+          element={
+            <MainLayout  >
+              <AllPage />
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path="/explore"
+          element={
+            <MainLayout noRightSidebar={true}>
+              <ExplorePage />
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path="/create-community"
+          element={
+            <MainLayout noRightSidebar={true}>
+              <CreateCommunityPage />
+            </MainLayout>
+          }
+        />
+
+        {/* MAIN PAGES */}
         <Route
           path="/"
           element={
@@ -30,6 +75,7 @@ function App() {
             </MainLayout>
           }
         />
+
         <Route
           path="/r/:name"
           element={
@@ -38,6 +84,7 @@ function App() {
             </MainLayout>
           }
         />
+
       </Routes>
     </BrowserRouter>
   );
